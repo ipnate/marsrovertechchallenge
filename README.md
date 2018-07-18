@@ -90,14 +90,16 @@ The file will be correctly formatted and validated before being used in the app
 
 ###### Prerequisites
 
-Ruby
-bundler
+`Ruby`
+`bundler`
 
 ```
 git clone git@github.com:ignatiuspdupreez/marsrovertechchallenge.git
 cd marsrovertechchallenge
 gem install rspec
-rspec #=> Finished in 0.01137 seconds (files took 0.19254 seconds to load)
-      #=> 7 examples, 0 failures
-ruby run.rb
 ```
+To run tests
+`rspec`
+
+To run app
+`ruby run.rb`
