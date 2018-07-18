@@ -6,7 +6,7 @@ We highly recommend using a unit testing framework such as JUnit or NUnit. Even 
 
 The code you write should be of production quality, and most importantly, it should be code you are proud of.
 
-###### MARS ROVERS
+## MARS ROVERS
 
 A squad of robotic rovers are to be landed by NASA on a plateau on Mars.
 
@@ -20,7 +20,7 @@ In order to control a rover, NASA sends a simple string of letters. The possible
 
 Assume that the square directly North from (x, y) is (x, y+1).
 
-###### Input:
+## Input:
 
 The first line of input is the upper-right coordinates of the plateau, the lower-left coordinates are assumed to be 0,0.
 
@@ -30,11 +30,11 @@ The position is made up of two integers and a letter separated by spaces, corres
 
 Each rover will be finished sequentially, which means that the second rover won't start to move until the first one has finished moving.
 
-###### Output:
+## Output:
 
 The output for each rover should be its final co-ordinates and heading.
 
-###### Test Input:
+## Test Input:
 
 ```
 5 5
@@ -55,7 +55,7 @@ RMRM
 
 MMRM
 ```
-###### Expected Output:
+## Expected Output:
 ```
 1 3 N
 5 1 E
@@ -85,3 +85,19 @@ We do not need to persist the data to a database
 Instructions will be added in a file the gets read by the program
 
 The file will be correctly formatted and validated before being used in the app
+
+## Get repo, run test and run app
+
+###### Prerequisites
+
+Ruby
+bundler
+
+```
+git clone git@github.com:ignatiuspdupreez/marsrovertechchallenge.git
+cd marsrovertechchallenge
+gem install rspec
+rspec #=> Finished in 0.01137 seconds (files took 0.19254 seconds to load)
+      #=> 7 examples, 0 failures
+ruby run.rb
+```
