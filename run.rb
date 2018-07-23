@@ -4,7 +4,7 @@ require './lib/world.rb'
 
 instructions = Instructions.new('instructions.txt')
 
-@world = World.new(6,6)
+@world = World.new(instructions.bound_x,instructions.bound_y)
 
 rover_instruction_sets = instructions.process_instructions
 rover_instruction_sets.each do |instruction_set|

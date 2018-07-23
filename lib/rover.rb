@@ -1,3 +1,4 @@
+require 'byebug'
 class Rover
   attr_accessor :x_coordinate, :y_coordinate, :orientation
   attr_reader :instructions

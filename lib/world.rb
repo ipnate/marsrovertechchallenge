@@ -1,3 +1,4 @@
+require 'byebug'
 class World
   attr_reader :grid, :rover_locations
 
@@ -5,30 +6,31 @@ class World
     @grid = {}
     @rovers = []
     @x_original = x_coordinate
+    @y_original = y_coordinate
     build_grid(x_coordinate, y_coordinate)
     @rover_locations = []
   end
 
   def land_and_navigate(rover)
-    execute_instructions_for(rover)
     update_location(rover.x_coordinate, rover.y_coordinate, rover.orientation, '-START-')
+    execute_instructions_for(rover)
     @rover_locations << "#{@x_coordinate} #{@y_coordinate} #{@orientation}"
     update_location(@x_coordinate, @y_coordinate, @orientation, '--END--')
   end
 
   def show_grid
-    print_array = []
-    @grid.map{|d|d[1]}.reverse.each_slice(@x_original+1) do |d|
-      print_array << "#{d.reverse.join(' ')}"
-    end
-    print_array
+    Array.new(@y_original+1).map.with_index do |a, y|
+      Array.new(@x_original+1).map.with_index do |_, x|
+        @grid["#{x},#{y}"]
+      end.join(" ")
+    end.reverse
   end
 
   private
 
   def build_grid(x_coordinate, y_coordinate)
-    (0..x_coordinate).map do |x|
-      (0..y_coordinate).map do |y|
+    (0..x_coordinate+1).map do |x|
+      (0..y_coordinate+1).map do |y|
          @grid["#{x},#{y}"] = '----------'
       end
     end
@@ -73,6 +75,6 @@ class World
   end
 
   def update_location(x, y, orientation,placeholder)
-    @grid["#{x},#{y}"] = "#{placeholder}-#{@orientation}-"
+    @grid["#{x},#{y}"] = "#{placeholder}-#{orientation}-"
   end
 end
