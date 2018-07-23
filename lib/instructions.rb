@@ -1,5 +1,4 @@
 class Instructions
-  attr_reader :bound_x, :bound_y
 
   def initialize(file)
     @instructions = File.read(file).chars.reject!{|char| char == " " || char == "\n"}
@@ -12,6 +11,14 @@ class Instructions
       @rover_instruction_sets << {landing: landing_instructions, navigate: navigation_instructions}
     end
     @rover_instruction_sets
+  end
+
+  def bound_x
+    @bound_x.to_i
+  end
+
+  def bound_y
+    @bound_x.to_i
   end
 
   private

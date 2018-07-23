@@ -7,8 +7,8 @@ describe Instructions do
 
   describe '.new' do
     it 'sets the x_bound and y_bound' do
-      expect(@instructions.bound_x).to eq("5")
-      expect(@instructions.bound_y).to eq("5")
+      expect(@instructions.bound_x).to eq(5)
+      expect(@instructions.bound_y).to eq(5)
     end
   end
 
