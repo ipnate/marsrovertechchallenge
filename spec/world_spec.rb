@@ -47,7 +47,7 @@ describe 'World' do
       end
 
       it 'is the stuff' do
-        expect(@world.show_grid[0]).to eq("---------- ---------- ---------- ---------- ---------- -START--S-")
+        expect(@world.show_grid[0]).to eq("---------- ---------- ---------- ---------- ---------- -START--N-")
         expect(@world.show_grid[1]).to eq("---------- ---------- ---------- ---------- ---------- ----------")
         expect(@world.show_grid[2]).to eq("---------- --END---N- ---------- -START--E- ---------- ----------")
         expect(@world.show_grid[3]).to eq("---------- -START--N- ---------- ---------- ---------- ----------")

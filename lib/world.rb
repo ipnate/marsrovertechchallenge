@@ -1,3 +1,4 @@
+require 'byebug'
 class World
   attr_reader :grid, :rover_locations
 
@@ -11,8 +12,8 @@ class World
   end
 
   def land_and_navigate(rover)
-    execute_instructions_for(rover)
     update_location(rover.x_coordinate, rover.y_coordinate, rover.orientation, '-START-')
+    execute_instructions_for(rover)
     @rover_locations << "#{@x_coordinate} #{@y_coordinate} #{@orientation}"
     update_location(@x_coordinate, @y_coordinate, @orientation, '--END--')
   end
@@ -74,7 +75,6 @@ class World
   end
 
   def update_location(x, y, orientation,placeholder)
-
-    @grid["#{x},#{y}"] = "#{placeholder}-#{@orientation}-"
+    @grid["#{x},#{y}"] = "#{placeholder}-#{orientation}-"
   end
 end
