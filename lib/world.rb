@@ -18,7 +18,7 @@ class World
   end
 
   def show_grid
-    output_array = Array.new(@y_original+1).map.with_index do |a, y|
+    Array.new(@y_original+1).map.with_index do |a, y|
       Array.new(@x_original+1).map.with_index do |_, x|
         @grid["#{x},#{y}"]
       end.join(" ")
