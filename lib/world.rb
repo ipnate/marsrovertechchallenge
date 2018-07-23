@@ -75,8 +75,8 @@ class World
 
   def move_y_coordinate
     y_coordinate = @orientation == "N" ? @y_coordinate + 1 : @y_coordinate - 1
-    grid_location = @grid["#{@x_coordinate},#{y_coordinate}"]
 
+    grid_location = @grid["#{@x_coordinate},#{y_coordinate}"]
     lost(grid_location)
 
     @y_coordinate = y_coordinate
@@ -84,15 +84,15 @@ class World
 
   def move_x_coordinate
     x_coordinate = @orientation == "E" ? @x_coordinate + 1 : @x_coordinate - 1
-    grid_location = @grid["#{x_coordinate},#{@y_coordinate}"]
 
+    grid_location = @grid["#{x_coordinate},#{@y_coordinate}"]
     lost(grid_location)
 
     @x_coordinate = x_coordinate
   end
 
   def lost(grid_location)
-    raise StandardError.new("Collision detected") if grid_location != '----------'
+    raise StandardError.new("You crashed the rover") if grid_location != '----------'
   end
 
   def update_location(x, y, orientation,placeholder)
