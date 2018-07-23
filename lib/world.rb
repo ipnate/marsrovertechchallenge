@@ -77,7 +77,7 @@ class World
     y_coordinate = @orientation == "N" ? @y_coordinate + 1 : @y_coordinate - 1
     grid_location = @grid["#{@x_coordinate},#{y_coordinate}"]
 
-    raise StandardError.new("Collision detected") if grid_location != '----------'
+    lost(grid_location)
 
     @y_coordinate = y_coordinate
   end
@@ -86,9 +86,13 @@ class World
     x_coordinate = @orientation == "E" ? @x_coordinate + 1 : @x_coordinate - 1
     grid_location = @grid["#{x_coordinate},#{@y_coordinate}"]
 
-    raise StandardError.new("Collision detected") if grid_location != '----------'
+    lost(grid_location)
 
     @x_coordinate = x_coordinate
+  end
+
+  def lost(grid_location)
+    raise StandardError.new("Collision detected") if grid_location != '----------'
   end
 
   def update_location(x, y, orientation,placeholder)
