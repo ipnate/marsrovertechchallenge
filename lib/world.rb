@@ -11,11 +11,18 @@ class World
     @rover_locations = []
   end
 
-  def land_and_navigate(rover)
-    update_location(rover.x_coordinate, rover.y_coordinate, rover.orientation, '-START-')
-    execute_instructions_for(rover)
-    @rover_locations << "#{@x_coordinate} #{@y_coordinate} #{@orientation}"
-    update_location(@x_coordinate, @y_coordinate, @orientation, '--END--')
+  def land_rovers(rovers)
+    rovers.each do |rover|
+      update_location(rover.x_coordinate, rover.y_coordinate, rover.orientation, '-START-')
+    end
+  end
+
+  def navigate_rovers(rovers)
+    rovers.each do |rover|
+      execute_instructions_for(rover)
+      @rover_locations << "#{@x_coordinate} #{@y_coordinate} #{@orientation}"
+      update_location(@x_coordinate, @y_coordinate, @orientation, '--END--')
+    end
   end
 
   def show_grid
@@ -67,11 +74,21 @@ class World
   end
 
   def move_y_coordinate
-    @orientation == "N" ? @y_coordinate += 1 : @y_coordinate -= 1
+    y_coordinate = @orientation == "N" ? @y_coordinate + 1 : @y_coordinate - 1
+    grid_location = @grid["#{@x_coordinate},#{y_coordinate}"]
+
+    raise StandardError.new("Collision detected") if grid_location != '----------'
+
+    @y_coordinate = y_coordinate
   end
 
   def move_x_coordinate
-      @orientation == "E" ? @x_coordinate += 1 : @x_coordinate -= 1
+    x_coordinate = @orientation == "E" ? @x_coordinate + 1 : @x_coordinate - 1
+    grid_location = @grid["#{x_coordinate},#{@y_coordinate}"]
+
+    raise StandardError.new("Collision detected") if grid_location != '----------'
+
+    @x_coordinate = x_coordinate
   end
 
   def update_location(x, y, orientation,placeholder)

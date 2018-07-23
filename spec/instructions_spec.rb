@@ -15,9 +15,8 @@ describe Instructions do
   describe '#process_instructions' do
     it 'returns an list of instructions for each rover' do
       instructions = [
-        {landing: ["1", "2", "N"], navigate: ["L", "M", "L", "M", "L", "M", "L", "M", "M"]},
-        {landing: ["3", "3", "E"], navigate: ["M", "M", "R", "M", "M", "R", "M", "R", "R", "M"]},
-        {landing: ["5", "5", "N"], navigate: ["R", "M", "R", "M"]}
+        {:landing=>["1", "1", "N"], :navigate=>["M", "M", "M", "M"]},
+        {:landing=>["2", "2", "E"], :navigate=>["M", "R", "M", "L", "M"]}
       ]
       expect(@instructions.process_instructions).to eq(instructions)
     end
