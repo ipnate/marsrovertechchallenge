@@ -18,7 +18,7 @@ class Instructions
   end
 
   def bound_y
-    @bound_x.to_i
+    @bound_y.to_i
   end
 
   private
